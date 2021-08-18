@@ -10,5 +10,53 @@
   </head>
   <body>
     <div class="start">Yes to pizza</div>
+
+    <div id="container" class="container">
+      <form id="form" autocomplete="off">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Pizza name" />
+        <br />
+        <label for="price">Price</label>
+        <input type="text" id="price" name="price" placeholder="Price" />
+        <br />
+        <label for="heat">Heat</label>
+        <select id="heat" name="heat">
+          <option value="low">low</option>
+          <option value="medium">medium</option>
+          <option value="high">high</option></select
+        ><br />
+
+        <label for="toppings">toppings</label>
+        <select id="toppings" name="toppings">
+          <option value="mushrooms">mushrooms</option>
+          <option value="peperoni">peperoni</option>
+          <option value="jelapeno">jelapeno</option></select
+        ><br />
+
+        <label for="photo">Photo</label>
+        <select id="photo" name="photo">
+          <option
+            value="https://foodish-api.herokuapp.com/images/pizza/pizza37.jpg"
+          >
+            1
+          </option>
+          <option
+            value="https://foodish-api.herokuapp.com/images/pizza/pizza85.jpg"
+          >
+            2
+          </option>
+          <option
+            value="https://foodish-api.herokuapp.com/images/pizza/pizza43.jpg"
+          >
+            3
+          </option>
+        </select>
+        <br />
+
+        <button type="submit">Create Post</button>
+      </form>
+    </div>
+
+    <div class="card-container"></div>
   </body>
 </html>
