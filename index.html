@@ -8,26 +8,38 @@
     <script src="./index.js" defer></script>
     <title>Pizza</title>
   </head>
-  <body>
+  <body class="container">
     <div class="start">Yes to pizza</div>
-
+    <div id="error"></div>
     <div id="container" class="container">
       <form id="form" autocomplete="off">
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Pizza name" />
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Pizza name"
+          required
+        />
         <br />
         <label for="price">Price</label>
-        <input type="text" id="price" name="price" placeholder="Price" />
+        <input
+          type="number"
+          id="price"
+          name="price"
+          placeholder="Price"
+          required
+        />
         <br />
         <label for="heat">Heat</label>
         <select id="heat" name="heat">
-          <option value="low">low</option>
-          <option value="medium">medium</option>
-          <option value="high">high</option></select
+          <option value="1">low</option>
+          <option value="2">medium</option>
+          <option value="3">high</option></select
         ><br />
 
         <label for="toppings">toppings</label>
-        <select id="toppings" name="toppings">
+        <select id="toppings" name="toppings" required>
           <option value="mushrooms">mushrooms</option>
           <option value="peperoni">peperoni</option>
           <option value="jelapeno">jelapeno</option></select
@@ -53,7 +65,7 @@
         </select>
         <br />
 
-        <button type="submit">Create Post</button>
+        <button class="btnsubmit" type="submit">Create Post</button>
       </form>
     </div>
 

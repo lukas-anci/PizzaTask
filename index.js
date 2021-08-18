@@ -7,10 +7,15 @@ const heatEl = document.getElementById('heat');
 const toppingsEl = document.getElementById('toppings');
 const photoEl = document.getElementById('photo');
 const cardContainerEl = document.querySelector('.card-container');
+const errorEl = document.getElementById('error');
+const removeEl = document.querySelector('.removeBtn');
+
+removeEl.addEventListener('click', () => {
+  storage.removeItem('pizza');
+});
 
 formEl.addEventListener('submit', (event) => {
   event.preventDefault();
-  console.log('sent');
 
   const pizzaToCreate = {
     name: nameEl.value,
@@ -20,6 +25,10 @@ formEl.addEventListener('submit', (event) => {
     photo: photoEl.value,
   };
 
+  if (nameEl.value < 3 || priceEl.value < 0) {
+    return;
+  }
+
   console.log(pizzaToCreate);
 
   cardContainerEl.innerHTML += `<div class="card">
@@ -28,8 +37,14 @@ formEl.addEventListener('submit', (event) => {
   <h5>${pizzaToCreate.heat}</h5>
   <h5>${pizzaToCreate.toppings}</h5>
   <img src=${pizzaToCreate.photo} alt="pizza">
+  <br/>
+
+  <button class='removeBtn'>Remove</button>
+  
+  
   
 </div>`;
 
-  return pizzaToCreate;
+  sessionStorage.setItem('pizza', JSON.stringify(pizzaToCreate));
+  document.getElementById('btnsubmit').value = '';
 });
