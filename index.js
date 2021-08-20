@@ -8,11 +8,6 @@ const toppingsEl = document.getElementById('toppings');
 const photoEl = document.getElementById('photo');
 const cardContainerEl = document.querySelector('.card-container');
 const errorEl = document.getElementById('error');
-const removeEl = document.querySelector('.removeBtn');
-
-removeEl.addEventListener('click', () => {
-  storage.removeItem('pizza');
-});
 
 formEl.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -39,12 +34,15 @@ formEl.addEventListener('submit', (event) => {
   <img src=${pizzaToCreate.photo} alt="pizza">
   <br/>
 
-  <button class='removeBtn'>Remove</button>
+  <button id='removeBtn'>Remove</button>
   
   
   
 </div>`;
 
   sessionStorage.setItem('pizza', JSON.stringify(pizzaToCreate));
-  document.getElementById('btnsubmit').value = '';
+  pizzaToCreate = {
+    name: '',
+    price: '',
+  };
 });
