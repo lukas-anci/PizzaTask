@@ -146,7 +146,7 @@ document.querySelector('#form').addEventListener('submit', (e) => {
 // Event remove pizza
 
 document.querySelector('.card-container').addEventListener('click', (e) => {
-  //   UI.deletePizza(e.target);
+  UI.deletePizza(e.target);
 
   Store.removePizza(e.target.dataset.id);
 });
