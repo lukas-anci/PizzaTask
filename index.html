@@ -9,12 +9,12 @@
     <script src="./app.js" defer></script>
     <title>Pizza</title>
   </head>
-  <body class="container">
-    <div class="start">Yes to pizza</div>
+  <body>
     <div id="error"></div>
     <div id="container" class="container">
-      <form id="form" autocomplete="off">
+      <form class="forma" id="form" autocomplete="off">
         <label for="name">Name</label>
+
         <input
           type="text"
           id="name"
@@ -22,8 +22,9 @@
           placeholder="Pizza name"
           required
         />
-        <br />
+
         <label for="price">Price</label>
+
         <input
           type="number"
           id="price"
@@ -31,20 +32,22 @@
           placeholder="Price"
           required
         />
-        <br />
+
         <label for="heat">Heat</label>
+
         <select id="heat" name="heat">
-          <option value="low">low</option>
-          <option value="medium">medium</option>
-          <option value="high">high</option></select
-        ><br />
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
 
         <label for="toppings">toppings</label>
+
         <select id="toppings" name="toppings" required>
-          <option value="mushrooms">mushrooms</option>
-          <option value="peperoni">peperoni</option>
-          <option value="jelapeno">jelapeno</option></select
-        ><br />
+          <option value="mushrooms">Mushrooms</option>
+          <option value="peperoni">Peperoni</option>
+          <option value="jelapeno">Jelapeno</option>
+        </select>
 
         <label for="photo">Photo</label>
         <select id="photo" name="photo">
@@ -65,7 +68,6 @@
           </option>
         </select>
         <br />
-
         <button class="btnsubmit" type="submit">Create Post</button>
       </form>
     </div>

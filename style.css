@@ -18,6 +18,12 @@ img {
   height: 150px;
   width: 150px;
 }
-#form {
+.forma {
   margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+input {
+  width: 95%;
 }

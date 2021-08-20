@@ -16,17 +16,29 @@ class Pizza {
   }
 }
 
-console.log(Pizza.generateId());
-
 // Ui class
 
 class UI {
+  constructor() {
+    this.pizzas = [];
+  }
+  addPizzaToArr(pizza) {
+    this.pizzas.push(pizza);
+  }
   static displayPizza() {
     const pizzas = Store.getPizzas();
     pizzas.forEach((pizza) => UI.addPizza(pizza));
   }
 
   static addPizza(pizza) {
+    // const onePizza=[{
+    //     id:1,
+    //     name:'dd',
+    //     price:12,
+    //     heat:'medium',
+    //     toppings:'mushrroms',
+    //     photo:'https://foodish-api.herokuapp.com/images/pizza/pizza37.jpg'
+    // }]
     const container = document.querySelector('.card-container');
 
     const card = document.createElement('div');
@@ -40,7 +52,7 @@ class UI {
     <img src=${pizza.photo} alt="pizza">
     <br/>
   
-    <a href=# class = 'btn delete'>Remove</a>
+    <a href=# data-id=${pizza.id} class = 'btn delete'>Remove</a>
     `;
     container.appendChild(card);
   }
@@ -67,10 +79,10 @@ class UI {
 class Store {
   static getPizzas() {
     let pizzas;
-    if (localStorage.getItem('pizzas') === null) {
+    if (sessionStorage.getItem('pizzas') === null) {
       pizzas = [];
     } else {
-      pizzas = JSON.parse(localStorage.getItem('pizzas'));
+      pizzas = JSON.parse(sessionStorage.getItem('pizzas'));
     }
     return pizzas;
   }
@@ -79,19 +91,20 @@ class Store {
     const pizzas = Store.getPizzas();
     pizzas.push(pizza);
 
-    localStorage.setItem('pizzas', JSON.stringify(pizzas));
+    sessionStorage.setItem('pizzas', JSON.stringify(pizzas));
   }
   static removePizza(id) {
-    const pizzas = JSON.parse(Store.getPizzas());
-    const filter = pizzas.filter((item) => item.id !== id);
-    localStorage.setItem('pizzas', JSON.stringify(filter));
+    const pizzas = JSON.parse(JSON.stringify(Store.getPizzas()));
 
-    //     pizzas.forEach((pizza, index) => {
-    //       if (pizza.id === id) {
-    //         pizzas.splice(index, 1);
-    //       }
-    //     });
-    //     localStorage.setItem('pizzas', JSON.stringify(pizzas));
+    const filter = pizzas.filter((item) => item.id !== id);
+    sessionStorage.setItem('pizzas', JSON.stringify(filter));
+
+    // pizzas.forEach((pizza, index) => {
+    //   if (pizza.id === id) {
+    //     pizzas.splice(index, 1);
+    //   }
+    // });
+    // localStorage.setItem('pizzas', JSON.stringify(pizzas));
   }
 }
 
@@ -106,7 +119,8 @@ document.querySelector('#form').addEventListener('submit', (e) => {
 
   //values
   const id = Pizza.generateId();
-  console.log('id', id);
+  //  const  document.querySelector('.delete');
+
   const name = document.querySelector('#name').value;
   const price = document.querySelector('#price').value;
   const heat = document.querySelector('#heat').value;
@@ -119,7 +133,10 @@ document.querySelector('#form').addEventListener('submit', (e) => {
     alert('Invalid form entry');
   } else {
     const pizza = new Pizza(id, name, price, heat, toppings, photo);
-    console.log(pizza);
+    // pizza.addPizzaToArr({ id, name, price, heat, toppings, photo });
+    const kazkas = new UI();
+    kazkas.addPizzaToArr();
+
     UI.addPizza(pizza);
     Store.addPizza(pizza);
     UI.clearFields();
@@ -130,8 +147,6 @@ document.querySelector('#form').addEventListener('submit', (e) => {
 
 document.querySelector('.card-container').addEventListener('click', (e) => {
   //   UI.deletePizza(e.target);
-  console.log('localstorage', localStorage.pizzas);
-  console.log(e.target.parentElement);
-  console.log(Object.entries(localStorage));
-  //   Store.removePizza(e.target.parentElement.previousElementSibling.textContent);
+
+  Store.removePizza(e.target.dataset.id);
 });
