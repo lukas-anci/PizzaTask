@@ -31,14 +31,6 @@ class UI {
   }
 
   static addPizza(pizza) {
-    // const onePizza=[{
-    //     id:1,
-    //     name:'dd',
-    //     price:12,
-    //     heat:'medium',
-    //     toppings:'mushrroms',
-    //     photo:'https://foodish-api.herokuapp.com/images/pizza/pizza37.jpg'
-    // }]
     const container = document.querySelector('.card-container');
 
     const card = document.createElement('div');
@@ -98,29 +90,20 @@ class Store {
 
     const filter = pizzas.filter((item) => item.id !== id);
     sessionStorage.setItem('pizzas', JSON.stringify(filter));
-
-    // pizzas.forEach((pizza, index) => {
-    //   if (pizza.id === id) {
-    //     pizzas.splice(index, 1);
-    //   }
-    // });
-    // localStorage.setItem('pizzas', JSON.stringify(pizzas));
   }
 }
 
-// Event: Display pizza
+// display pizza
 
 document.addEventListener('DOMContentLoaded', UI.displayPizza);
 
-// Event add pizza
+//  add pizza
 
 document.querySelector('#form').addEventListener('submit', (e) => {
   e.preventDefault();
 
   //values
   const id = Pizza.generateId();
-  //  const  document.querySelector('.delete');
-
   const name = document.querySelector('#name').value;
   const price = document.querySelector('#price').value;
   const heat = document.querySelector('#heat').value;
@@ -133,9 +116,6 @@ document.querySelector('#form').addEventListener('submit', (e) => {
     alert('Invalid form entry');
   } else {
     const pizza = new Pizza(id, name, price, heat, toppings, photo);
-    // pizza.addPizzaToArr({ id, name, price, heat, toppings, photo });
-    const kazkas = new UI();
-    kazkas.addPizzaToArr();
 
     UI.addPizza(pizza);
     Store.addPizza(pizza);
@@ -147,6 +127,5 @@ document.querySelector('#form').addEventListener('submit', (e) => {
 
 document.querySelector('.card-container').addEventListener('click', (e) => {
   UI.deletePizza(e.target);
-
   Store.removePizza(e.target.dataset.id);
 });
