@@ -37,10 +37,10 @@ class UI {
     card.className = 'card';
 
     card.innerHTML = `
-    <h5>${pizza.name}</h5>
-    <h5>${pizza.price}</h5>
-    <h5>${pizza.heat}</h5>
-    <h5>${pizza.toppings}</h5>
+    <h5>Name: ${pizza.name}</h5>
+    <h5>Price: ${pizza.price}</h5>
+    <h5>Heat:${pizza.heat}</h5>
+    <h5>Toppings:${pizza.toppings}</h5>
     <img src=${pizza.photo} alt="pizza">
     <br/>
   
@@ -128,4 +128,5 @@ document.querySelector('#form').addEventListener('submit', (e) => {
 document.querySelector('.card-container').addEventListener('click', (e) => {
   UI.deletePizza(e.target);
   Store.removePizza(e.target.dataset.id);
+  console.log(e.target.dataset.id);
 });

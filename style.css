@@ -12,7 +12,9 @@
   width: 250px;
   border: 1px solid black;
   text-align: center;
-  background-color: aliceblue;
+  background-color: white;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 5px 5px 15px 5px #000000;
 }
 img {
   height: 150px;
@@ -26,4 +28,10 @@ img {
 }
 input {
   width: 95%;
+}
+
+.delete {
+  color: red;
+  padding: 1em;
+  text-decoration: none;
 }
